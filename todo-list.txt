@@ -1,0 +1,48 @@
+** SPACE INVADERS CLONE TODO LIST ** 
+
+Enemy
+	- Make enemies spawn in waves which can be customized.
+	- Make enemies fire randomly.
+	- Make enemies take damage and die.
+	- Enemy bullets can collide with player bullets destroying both bullets.
+	- Two different enemy types.
+
+Wave System
+	- Spawn enemies in wave.
+	- Spawn new wave when all enemies are dead.
+	- Spawn asteroids
+	
+	Configurable Options
+	- Enemy spawn amount.
+	- Enemy speed?
+	- Enemy fire rate.
+	- Asteroid amount.
+	- Asteroid speed.
+
+Player
+	- Ability to switch between different weapons that shoot different ammo types.
+	- Move left right and up and down.
+	- Shoot asteroids to collect repair materials.
+
+Transport Ships
+	- Have 5 health points.
+	- Can be repaired for one health point per 3 repair material.
+
+Upgrade System
+	- Player can upgrade speed
+	- Player can equip shield which can last for one hit.
+	- Player can unlock second type of bullet.
+
+UI
+	- Show currently selected weapon using a sprite.
+	- Show health points as cubes.
+	- Keep track of how many enemy ships the player destroys.
+	- Show a global score for everything the player has destroyed, including asteroids, etc.
+
+Sound
+	- Use modified sound and music from original game.
+
+Art
+	- Pixel Art.
+
+Art Assets Needed
