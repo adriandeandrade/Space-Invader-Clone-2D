@@ -20,8 +20,8 @@ Wave System
 	- Asteroid speed.
 
 Player
-	- Ability to switch between different weapons that shoot different ammo types.
-	- Move left right and up and down.
+	- Ability to switch between different weapons that shoot different ammo types. // 
+	- Move left right and up and down. //
 	- Shoot asteroids to collect repair materials.
 
 Transport Ships
@@ -34,7 +34,7 @@ Upgrade System
 	- Player can unlock second type of bullet.
 
 UI
-	- Show currently selected weapon using a sprite.
+	- Show currently selected weapon using a sprite. //
 	- Show health points as cubes.
 	- Keep track of how many enemy ships the player destroys.
 	- Show a global score for everything the player has destroyed, including asteroids, etc.
@@ -46,3 +46,7 @@ Art
 	- Pixel Art.
 
 Art Assets Needed
+
+
+** BUGS **
+	- Clamp player diagonal movement

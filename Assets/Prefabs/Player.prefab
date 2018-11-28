@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 212338356214897636}
   - component: {fileID: 114449755472814810}
   - component: {fileID: 114282532484044116}
+  - component: {fileID: 114127607031768888}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -123,13 +124,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1876793810932094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.59, z: 0}
+  m_LocalPosition: {x: 0, y: -4.62, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 4552977080631020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114127607031768888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876793810932094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041c88d598dd00d4da2a5124533ef572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFireMode: 0
+  bulletGunType: {fileID: 11400000, guid: f19802baf152d0f4d8aac777487da844, type: 2}
+  explosiveGunType: {fileID: 11400000, guid: 63170461e10c7f849b4495aea6a8e051, type: 2}
+  currentGunType: {fileID: 0}
 --- !u!114 &114282532484044116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c3a6dd472609a4bbff70751fc8ae82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 4552977080631020}
   shootPoint: {fileID: 4045723155907270}
 --- !u!114 &114449755472814810
 MonoBehaviour:

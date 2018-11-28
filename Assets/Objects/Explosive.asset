@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb9768a78d7d2342b7cbfba3caa3e8d, type: 3}
+  m_Name: Explosive
+  m_EditorClassIdentifier: 
+  damage: 5
+  damageRange: 2
+  projectilePrefab: {fileID: 1558032294913638, guid: 012f822f07dae63428784c38b5c07467,
+    type: 2}
