@@ -1,10 +1,10 @@
 ** SPACE INVADERS CLONE TODO LIST ** 
 
 Enemy
-	- Make enemies spawn in waves which can be customized.
-	- Make enemies fire randomly.
-	- Make enemies take damage and die.
-	- Enemy bullets can collide with player bullets destroying both bullets.
+	- Make enemies spawn in waves which can be customized. ?*
+	- Make enemies fire randomly. //
+	- Make enemies take damage and die. //
+	- Enemy bullets can collide with player bullets destroying both bullets. //
 	- Two different enemy types.
 
 Wave System
@@ -53,3 +53,6 @@ Art Assets Needed
 
 colliderXSize = (enemySize * enemyAmount) + paddingX;
 colliderYSize = (enemySize * enemyAmount) + paddingY;
+
+1.54
+1.16

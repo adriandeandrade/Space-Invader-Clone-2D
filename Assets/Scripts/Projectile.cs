@@ -58,7 +58,7 @@ public class Projectile : MonoBehaviour
                     float proximity = (other.transform.position - e.transform.position).magnitude;
                     float damageAmount = 1 - (proximity / projectileType.damageRange);
 
-                    enemy.GetComponent<IDamageable>().TakeDamage(projectileType.damage * damageAmount);
+                    enemy.GetComponent<IDamageable>().TakeDamage(projectileType.damage * damageAmount + 0.5f);
                 }
             }
 

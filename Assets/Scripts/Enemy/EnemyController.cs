@@ -29,6 +29,15 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void Die()
     {
         GameManager.instance.enemiesLeft -= 1;
+
+        foreach (GameObject e in GameManager.instance.enemies)
+        {
+            if(e == this)
+            {
+                GameManager.instance.enemies.Remove(e);
+                return;
+            }
+        }
         Destroy(gameObject);
     }
 }

@@ -32,15 +32,15 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < amountToSpawn; i++)
             {
-                GameObject e = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                GameObject e = Instantiate(enemyPrefab, spawnPosition, enemyPrefab.transform.rotation);
                 e.transform.parent = enemyHolder.transform;
-                spawnPosition = new Vector3(spawnPosition.x + 1, spawnPosition.y, 0f);
+                spawnPosition = new Vector3(spawnPosition.x + 1.54f, spawnPosition.y, 0f);
                 GameManager.instance.enemiesLeft += 1;
                 yield return new WaitForSeconds(0.05f);
             }
             yield return new WaitForSeconds(0.05f);
-            spawnPosition.x = -4.506f;
-            spawnPosition.y -= 1;
+            spawnPosition.x = -3.85f;
+            spawnPosition.y -= 1.16f;
             rowAmount -= 1;
         }
 
