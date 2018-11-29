@@ -11,6 +11,8 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private GameObject enemyHolder;
 
+    [SerializeField] private EnemyShootManager enemyShootManager;
+
     private int rowAmount = 3;
 
     private Vector3 spawnPosition;
@@ -32,8 +34,8 @@ public class Spawner : MonoBehaviour
             {
                 GameObject e = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 e.transform.parent = enemyHolder.transform;
-                GameManager.instance.enemiesLeft += 1;
                 spawnPosition = new Vector3(spawnPosition.x + 1, spawnPosition.y, 0f);
+                GameManager.instance.enemiesLeft += 1;
                 yield return new WaitForSeconds(0.05f);
             }
             yield return new WaitForSeconds(0.05f);
@@ -43,6 +45,7 @@ public class Spawner : MonoBehaviour
         }
 
         enemyMovement.doMovement = true;
+        enemyShootManager.startPicking = true;
         StartCoroutine(enemyMovement.Movement());
     }
 }

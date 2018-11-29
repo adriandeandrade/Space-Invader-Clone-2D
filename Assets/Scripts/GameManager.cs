@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [HideInInspector] public WeaponSystem weaponSystem;
-    
     [HideInInspector] public int enemiesLeft;
+    [SerializeField] public List<GameObject> enemies;
 
     private void Awake()
     {
@@ -39,5 +39,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
 }
