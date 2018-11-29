@@ -8,4 +8,5 @@ public class GunType : ScriptableObject
     public int damage;
     public int damageRange; // The range which the bullet will deal damage.
     public GameObject projectilePrefab;
+    public float shotCooldown;
 }

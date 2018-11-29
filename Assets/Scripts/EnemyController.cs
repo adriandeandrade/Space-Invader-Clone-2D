@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
-    public int health;
+    public float health;
 
     private void Update()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
             Die();
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (health > 0)
         {
@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        GameManager.instance.enemiesLeft -= 1;
         Destroy(gameObject);
     }
 }

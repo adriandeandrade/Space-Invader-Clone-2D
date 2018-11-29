@@ -27,10 +27,17 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [HideInInspector] public WeaponSystem weaponSystem;
+    
+    [HideInInspector] public int enemiesLeft;
 
     private void Awake()
     {
         weaponSystem = FindObjectOfType<PlayerController>().GetComponent<WeaponSystem>();
+    }
+
+    private void Start()
+    {
+        
     }
 
 }

@@ -50,3 +50,6 @@ Art Assets Needed
 
 ** BUGS **
 	- Clamp player diagonal movement
+
+colliderXSize = (enemySize * enemyAmount) + paddingX;
+colliderYSize = (enemySize * enemyAmount) + paddingY;

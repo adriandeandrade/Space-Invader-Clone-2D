@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
 
                     case WeaponSystem.FireMode.EXPLOSIVE:
                         Destroy(gameObject);
-                        ExplosiveBehavior(other);
+                        ExplosiveBulletBehavior(other);
                         break;
                 }
             }
@@ -43,16 +43,26 @@ public class Projectile : MonoBehaviour
         other.GetComponent<IDamageable>().TakeDamage(projectileType.damage);
     }
 
-    private void ExplosiveBehavior(Collider2D other)
+    private void ExplosiveBulletBehavior(Collider2D other)
     {
         Collider2D[] nearby = Physics2D.OverlapCircleAll(other.transform.position, projectileType.damageRange);
 
-        if (nearby.Length != 0)
+        if (nearby.Length > 0)
         {
             foreach (Collider2D enemy in nearby)
             {
-                enemy.GetComponent<IDamageable>().TakeDamage(projectileType.damage);
+                EnemyController e = enemy.GetComponent<EnemyController>();
+
+                if(e != null)
+                {
+                    float proximity = (other.transform.position - e.transform.position).magnitude;
+                    float damageAmount = 1 - (proximity / projectileType.damageRange);
+
+                    enemy.GetComponent<IDamageable>().TakeDamage(projectileType.damage * damageAmount);
+                }
             }
+
+            Debug.Log(nearby.Length);
         }
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Explosive
   m_EditorClassIdentifier: 
   damage: 5
-  damageRange: 2
+  damageRange: 3
   projectilePrefab: {fileID: 1558032294913638, guid: 012f822f07dae63428784c38b5c07467,
     type: 2}
+  shotCooldown: 1
