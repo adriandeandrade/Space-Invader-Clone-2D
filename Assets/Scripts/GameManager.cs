@@ -30,9 +30,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<GameObject> enemies;
 
     [HideInInspector] public int enemiesLeft;
+    [HideInInspector] public int enemiesKilled;
     [HideInInspector] public int shipsLeft;
     [HideInInspector] public bool playerAlive;
     [HideInInspector] public bool gameOver = false;
+    [HideInInspector] public bool canShoot = false;
 
     private void Awake()
     {
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         playerAlive = true;
         shipsLeft = 3;
+        enemiesKilled = 0;
     }
 
     private void Update()

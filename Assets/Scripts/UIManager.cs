@@ -70,7 +70,6 @@ public class UIManager : MonoBehaviour
 
     public void HideHealth(int playerHealthIndex)
     {
-        print(playerHealthIndex);
         switch(playerHealthIndex)
         {
             case 2:

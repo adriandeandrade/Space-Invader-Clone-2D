@@ -11,9 +11,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float spawnSpeed;
     [SerializeField] private float amountToSpawnPerRow;
     [SerializeField] private int rowAmount = 3;
+    
 
     [Header("Other Spawner Options")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject enemy1Prefab;
+    [SerializeField] private GameObject enemy2Prefab;
+    [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();
     [SerializeField] private GameObject enemyHolder;
 
     [SerializeField] private EnemyShootManager enemyShootManager;
@@ -35,7 +38,8 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < amountToSpawnPerRow; i++)
             {
-                GameObject e = Instantiate(enemyPrefab, spawnPosition, enemyPrefab.transform.rotation);
+                int randomIndex = Random.Range(0, 2);
+                GameObject e = Instantiate(enemyPrefabs[randomIndex], spawnPosition, enemyPrefabs[randomIndex].transform.rotation);
                 e.transform.parent = enemyHolder.transform;
                 spawnPosition = new Vector3(spawnPosition.x + nextXAmount, spawnPosition.y, 0f);
                 GameManager.instance.enemiesLeft += 1;
@@ -50,6 +54,7 @@ public class Spawner : MonoBehaviour
         enemyMovement.doMovement = true;
         enemyShootManager.startPicking = true;
         enemyShootManager.doShooting = true;
+        GameManager.instance.canShoot = true;
         StartCoroutine(enemyMovement.Movement());
     }
 }

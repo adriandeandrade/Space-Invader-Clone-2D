@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Die()
     {
         GameManager.instance.enemiesLeft -= 1;
+        GameManager.instance.enemiesKilled++;
+        print("Enemies Killed: " + GameManager.instance.enemiesKilled);
 
         if(GameManager.instance.enemiesLeft <= 0)
         {

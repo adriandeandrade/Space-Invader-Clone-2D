@@ -66,8 +66,6 @@ public class Projectile : MonoBehaviour
                     FindObjectOfType<AudioManager>().Play("Hit");
                 }
             }
-
-            Debug.Log(nearby.Length);
         }
     }
 }
