@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     private void Die()
     {
         GameManager.instance.EndGame();
+        FindObjectOfType<AudioManager>().Play("Die");
         Destroy(gameObject);
     }
 }

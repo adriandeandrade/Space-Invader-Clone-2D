@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
         GameObject effect = Instantiate(hitEffect, other.transform.position, Quaternion.identity);
         Destroy(effect, 3f);
         other.GetComponent<IDamageable>().TakeDamage(projectileType.damage);
+        FindObjectOfType<AudioManager>().Play("Hit");
     }
 
     private void ExplosiveBulletBehavior(Collider2D other)
@@ -62,6 +63,7 @@ public class Projectile : MonoBehaviour
                     GameObject effect = Instantiate(hitEffect, other.transform.position, Quaternion.identity);
                     Destroy(effect, 3f);
                     enemy.GetComponent<IDamageable>().TakeDamage(projectileType.damage * damageAmount + 0.5f);
+                    FindObjectOfType<AudioManager>().Play("Hit");
                 }
             }
 

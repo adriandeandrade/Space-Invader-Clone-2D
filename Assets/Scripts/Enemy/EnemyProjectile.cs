@@ -29,6 +29,7 @@ public class EnemyProjectile : MonoBehaviour
 
             if(damageable != null)
             {
+                FindObjectOfType<AudioManager>().Play("Hit");
                 damageable.TakeDamage(1);
             }
         }
@@ -42,6 +43,7 @@ public class EnemyProjectile : MonoBehaviour
 
             if (damageable != null)
             {
+                FindObjectOfType<AudioManager>().Play("Hit");
                 damageable.TakeDamage(1);
             }
         }

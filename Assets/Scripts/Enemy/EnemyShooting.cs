@@ -22,6 +22,7 @@ public class EnemyShooting : MonoBehaviour
         if (Time.time > nextShotTime)
         {
             GameObject eBullet = Instantiate(enemyProjectilePrefab, shootPoint.position, Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("Shoot");
             Destroy(eBullet, 5f);
         }
     }

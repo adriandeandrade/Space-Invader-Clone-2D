@@ -41,6 +41,7 @@ public class ShootingSystem : MonoBehaviour
             if (Time.time > nextShotTimeBullet)
             {
                 GameObject bullet = Instantiate(currentProjectilePrefab, shootPoint.position, Quaternion.identity);
+                FindObjectOfType<AudioManager>().Play("Shoot");
                 Destroy(bullet, 5.0f);
 
                 nextShotTimeBullet = Time.time + weaponSystem.currentGunType.shotCooldown;
@@ -51,6 +52,7 @@ public class ShootingSystem : MonoBehaviour
             if (Time.time > nextShotTimeExplosive)
             {
                 GameObject bullet = Instantiate(currentProjectilePrefab, shootPoint.position, Quaternion.identity);
+                FindObjectOfType<AudioManager>().Play("Shoot2");
                 Destroy(bullet, 5.0f);
 
                 nextShotTimeExplosive = Time.time + weaponSystem.currentGunType.shotCooldown;
