@@ -27,8 +27,12 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [HideInInspector] public WeaponSystem weaponSystem;
-    [HideInInspector] public int enemiesLeft;
     [SerializeField] public List<GameObject> enemies;
+
+    [HideInInspector] public int enemiesLeft;
+    [HideInInspector] public int shipsLeft;
+    [HideInInspector] public bool playerAlive;
+    [HideInInspector] public bool gameOver = false;
 
     private void Awake()
     {
@@ -37,6 +41,28 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        playerAlive = true;
+        shipsLeft = 3;
+    }
+
+    private void Update()
+    {
+        if(shipsLeft <= 0 && !gameOver)
+        {
+            EndGame();
+        }
+    }
+
+    public void EndGame()
+    {
+        gameOver = true;
+        playerAlive = false;
+        UIManager.instance.gameOverPanel.SetActive(true);
+    }
+
+    public void WinGame()
+    {
+        gameOver = true;
+        UIManager.instance.winPanel.SetActive(true);
     }
 }

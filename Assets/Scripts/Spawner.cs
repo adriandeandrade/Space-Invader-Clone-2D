@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private float amountToSpawn;
+    [Header("Spawner Options")]
     [SerializeField] private Vector3 initalSpawnPosition;
+    [SerializeField] private float nextXAmount;
+    [SerializeField] private float nextYAmount;
+    [SerializeField] private float spawnSpeed;
+    [SerializeField] private float amountToSpawnPerRow;
+    [SerializeField] private int rowAmount = 3;
 
+    [Header("Other Spawner Options")]
     [SerializeField] private GameObject enemyPrefab;
-
     [SerializeField] private GameObject enemyHolder;
 
     [SerializeField] private EnemyShootManager enemyShootManager;
-
-    private int rowAmount = 3;
 
     private Vector3 spawnPosition;
 
@@ -30,22 +33,23 @@ public class Spawner : MonoBehaviour
     {
         while(rowAmount > 0)
         {
-            for (int i = 0; i < amountToSpawn; i++)
+            for (int i = 0; i < amountToSpawnPerRow; i++)
             {
                 GameObject e = Instantiate(enemyPrefab, spawnPosition, enemyPrefab.transform.rotation);
                 e.transform.parent = enemyHolder.transform;
-                spawnPosition = new Vector3(spawnPosition.x + 1.54f, spawnPosition.y, 0f);
+                spawnPosition = new Vector3(spawnPosition.x + nextXAmount, spawnPosition.y, 0f);
                 GameManager.instance.enemiesLeft += 1;
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(spawnSpeed);
             }
-            yield return new WaitForSeconds(0.05f);
-            spawnPosition.x = -3.85f;
-            spawnPosition.y -= 1.16f;
+            
+            spawnPosition.x = initalSpawnPosition.x;
+            spawnPosition.y -= nextYAmount;
             rowAmount -= 1;
         }
 
         enemyMovement.doMovement = true;
         enemyShootManager.startPicking = true;
+        enemyShootManager.doShooting = true;
         StartCoroutine(enemyMovement.Movement());
     }
 }

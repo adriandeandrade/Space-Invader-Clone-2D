@@ -8,6 +8,7 @@ public class EnemyShootManager : MonoBehaviour
     private float nextPickTime;
 
     [HideInInspector] public bool startPicking = false;
+    [HideInInspector] public bool doShooting = false;
 
     private void Start()
     {
@@ -27,8 +28,8 @@ public class EnemyShootManager : MonoBehaviour
     public void FindEnemies()
     {
         GameManager.instance.enemies = new List<GameObject>();
-        EnemyController[] tempEnemies = FindObjectsOfType<EnemyController>();
-        foreach (EnemyController enemy in tempEnemies)
+        Enemy[] tempEnemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in tempEnemies)
         {
             GameObject e = enemy.gameObject;
             GameManager.instance.enemies.Add(e);
@@ -37,7 +38,7 @@ public class EnemyShootManager : MonoBehaviour
 
     public GameObject PickRandomEnemyAndShoot()
     {
-        if(GameManager.instance.enemies != null)
+        if(GameManager.instance.enemies != null && doShooting)
         {
             int randomEnemy = Random.Range(0, GameManager.instance.enemies.Count);
             GameManager.instance.enemies[randomEnemy].GetComponent<EnemyShooting>().Shoot();

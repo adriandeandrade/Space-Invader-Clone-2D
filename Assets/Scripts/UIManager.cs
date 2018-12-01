@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -29,8 +30,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject bulletIcon;
     [SerializeField] private GameObject explosiveIcon;
-
+    public GameObject gameOverPanel;
+    public GameObject winPanel;
     private GameObject currentIcon;
+
+    public List<GameObject> healthIcons = new List<GameObject>();
 
     private void Start()
     {
@@ -63,4 +67,38 @@ public class UIManager : MonoBehaviour
                 break;
         }
     }
+
+    public void HideHealth(int playerHealthIndex)
+    {
+        print(playerHealthIndex);
+        switch(playerHealthIndex)
+        {
+            case 2:
+                healthIcons[2].gameObject.SetActive(false);
+                break;
+            case 1:
+                healthIcons[1].gameObject.SetActive(false);
+                break;
+            case 0:
+                foreach (GameObject healthIcon in healthIcons)
+                {
+                    if(healthIcon.activeSelf != false)
+                    {
+                        healthIcon.SetActive(false);
+                    }
+                }
+                break;
+        }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }

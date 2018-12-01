@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private GameObject hitEffect;
 
     private void Update()
     {
@@ -21,7 +22,28 @@ public class EnemyProjectile : MonoBehaviour
 
         if(other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            Destroy(gameObject);
+            GameObject effect = Instantiate(hitEffect, other.transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+            IDamageable damageable = other.GetComponent<IDamageable>();
+
+            if(damageable != null)
+            {
+                damageable.TakeDamage(1);
+            }
+        }
+
+        if (other.CompareTag("TransportShip"))
+        {
+            Destroy(gameObject);
+            GameObject effect = Instantiate(hitEffect, other.transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+            IDamageable damageable = other.GetComponent<IDamageable>();
+
+            if (damageable != null)
+            {
+                damageable.TakeDamage(1);
+            }
         }
     }
 }

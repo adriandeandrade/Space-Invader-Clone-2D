@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable
 {
     public float health;
 
@@ -29,6 +29,11 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void Die()
     {
         GameManager.instance.enemiesLeft -= 1;
+
+        if(GameManager.instance.enemiesLeft <= 0)
+        {
+            GameManager.instance.WinGame();
+        }
 
         foreach (GameObject e in GameManager.instance.enemies)
         {

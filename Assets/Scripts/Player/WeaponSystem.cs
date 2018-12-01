@@ -47,7 +47,7 @@ public class WeaponSystem : MonoBehaviour
 
         if (OnFireModeChanged != null)
         {
-            OnFireModeChanged(currentGunType);
+            OnFireModeChanged(currentGunType); // This is event fires everytime we switch guns to notify the UI so it can update and show the correct gun type icon.
         }
     }
 }

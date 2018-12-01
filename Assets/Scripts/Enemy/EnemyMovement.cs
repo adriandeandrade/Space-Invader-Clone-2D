@@ -4,32 +4,48 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float enemySpeed;
+    [Header("Movement Options")]
+
+    [SerializeField] private float xIncrementAmount;
+    [SerializeField] private float enemyMoveSpeed;
+    [SerializeField] private float yDropAmount;
+    [SerializeField] private float minXBound;
+    [SerializeField] private float maxXBound;
 
     public bool doMovement;
-
-    private void Start()
-    {
-
-    }
 
     public IEnumerator Movement()
     {
         while (doMovement)
         {
-            transform.position += Vector3.right * enemySpeed * Time.deltaTime;
+            transform.position += Vector3.right * xIncrementAmount * Time.deltaTime;
 
-            foreach (Transform enemy in transform)
+            foreach (Transform enemy in transform) // Loop through all children of the enemy holder without creating a list.
             {
-                if (enemy.position.x <= -4.70f || enemy.position.x >= 4.70f)
+                if (enemy.position.x <= minXBound || enemy.position.x >= maxXBound)
                 {
-                    enemySpeed = -enemySpeed;
-                    transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f);
+                    xIncrementAmount = -xIncrementAmount;
+                    transform.position = new Vector3(transform.position.x, transform.position.y - yDropAmount);
                     yield return null;
                 }
-                // TODO: GameOver
+
+                if(enemy.position.y <= -3.51f && !GameManager.instance.gameOver)
+                {
+                    GameManager.instance.EndGame();
+                    Debug.Log("GameOver");
+                }
+
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(enemyMoveSpeed);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("TransportShip") || other.CompareTag("Bottom"))
+        {
+            Debug.Log("GameOver");
+            GameManager.instance.EndGame();
         }
     }
 }

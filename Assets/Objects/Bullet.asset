@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb9768a78d7d2342b7cbfba3caa3e8d, type: 3}
   m_Name: Bullet
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
   damageRange: 0
   projectilePrefab: {fileID: 1558032294913638, guid: b2d0d9e9b44ac804ebe7b24f00203d4c,
     type: 2}

@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float bulletSpeed;
 
     [SerializeField] private GunType projectileType;
+    [SerializeField] private GameObject hitEffect;
 
     private void Update()
     {
@@ -17,21 +18,19 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            IDamageable damageableObject = other.GetComponent<IDamageable>(); // Checks if the 
+            IDamageable damageableObject = other.GetComponent<IDamageable>(); 
             if (damageableObject != null)
             {
-                Debug.Log("hit");
-
                 switch (GameManager.instance.weaponSystem.currentFireMode)
                 {
                     case WeaponSystem.FireMode.BULLET:
-                        Destroy(gameObject);
                         BulletBehavior(other);
+                        Destroy(gameObject);
                         break;
 
                     case WeaponSystem.FireMode.EXPLOSIVE:
-                        Destroy(gameObject);
                         ExplosiveBulletBehavior(other);
+                        Destroy(gameObject);
                         break;
                 }
             }
@@ -40,6 +39,8 @@ public class Projectile : MonoBehaviour
 
     private void BulletBehavior(Collider2D other)
     {
+        GameObject effect = Instantiate(hitEffect, other.transform.position, Quaternion.identity);
+        Destroy(effect, 3f);
         other.GetComponent<IDamageable>().TakeDamage(projectileType.damage);
     }
 
@@ -51,13 +52,15 @@ public class Projectile : MonoBehaviour
         {
             foreach (Collider2D enemy in nearby)
             {
-                EnemyController e = enemy.GetComponent<EnemyController>();
+                Enemy e = enemy.GetComponent<Enemy>();
 
                 if(e != null)
                 {
                     float proximity = (other.transform.position - e.transform.position).magnitude;
                     float damageAmount = 1 - (proximity / projectileType.damageRange);
 
+                    GameObject effect = Instantiate(hitEffect, other.transform.position, Quaternion.identity);
+                    Destroy(effect, 3f);
                     enemy.GetComponent<IDamageable>().TakeDamage(projectileType.damage * damageAmount + 0.5f);
                 }
             }

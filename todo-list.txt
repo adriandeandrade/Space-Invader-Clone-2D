@@ -13,9 +13,9 @@ Wave System
 	- Spawn asteroids
 	
 	Configurable Options
-	- Enemy spawn amount.
-	- Enemy speed?
-	- Enemy fire rate.
+	- Enemy spawn amount. //
+	- Enemy speed? //
+	- Enemy fire rate. 
 	- Asteroid amount.
 	- Asteroid speed.
 
@@ -35,7 +35,7 @@ Upgrade System
 
 UI
 	- Show currently selected weapon using a sprite. //
-	- Show health points as cubes.
+	- Show health points as cubes. *
 	- Keep track of how many enemy ships the player destroys.
 	- Show a global score for everything the player has destroyed, including asteroids, etc.
 
@@ -48,11 +48,5 @@ Art
 Art Assets Needed
 
 
-** BUGS **
-	- Clamp player diagonal movement
-
-colliderXSize = (enemySize * enemyAmount) + paddingX;
-colliderYSize = (enemySize * enemyAmount) + paddingY;
-
-1.54
-1.16
+Next to do
+	- Transport ships

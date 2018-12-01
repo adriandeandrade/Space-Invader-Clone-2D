@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     private float cooldown;
-    private float nextShotTime;
+    private float nextShotTimeBullet;
+    private float nextShotTimeExplosive;
 
     [SerializeField] private Transform shootPoint;
 
@@ -26,8 +27,8 @@ public class ShootingSystem : MonoBehaviour
     }
 
     private void Update()
-    { 
-        if(Input.GetKeyDown(KeyCode.Space))
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
@@ -35,15 +36,29 @@ public class ShootingSystem : MonoBehaviour
 
     private void Shoot()
     {
-        if(Time.time > nextShotTime)
+        if (weaponSystem.currentFireMode == WeaponSystem.FireMode.BULLET)
         {
-            GameObject bullet = Instantiate(currentProjectilePrefab, shootPoint.position, Quaternion.identity);
-            Destroy(bullet, 5.0f);
+            if (Time.time > nextShotTimeBullet)
+            {
+                GameObject bullet = Instantiate(currentProjectilePrefab, shootPoint.position, Quaternion.identity);
+                Destroy(bullet, 5.0f);
 
-            nextShotTime = Time.time + weaponSystem.currentGunType.shotCooldown;
+                nextShotTimeBullet = Time.time + weaponSystem.currentGunType.shotCooldown;
+            }
+        }
+        else if (weaponSystem.currentFireMode == WeaponSystem.FireMode.EXPLOSIVE)
+        {
+            if (Time.time > nextShotTimeExplosive)
+            {
+                GameObject bullet = Instantiate(currentProjectilePrefab, shootPoint.position, Quaternion.identity);
+                Destroy(bullet, 5.0f);
+
+                nextShotTimeExplosive = Time.time + weaponSystem.currentGunType.shotCooldown;
+            }
         }
 
-        
+
+
     }
 
     private void UpdateProjectile(GunType gunType)

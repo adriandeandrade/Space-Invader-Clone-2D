@@ -6,7 +6,6 @@ public class EnemyShooting : MonoBehaviour
 {
     [SerializeField] private Transform shootPoint;
 
-    [SerializeField] private float enemyShootInterval;
     [SerializeField] private float shootIntervalCooldown;
     private float nextShotTime;
 
@@ -20,10 +19,10 @@ public class EnemyShooting : MonoBehaviour
 
     public void Shoot()
     {
-        if(Time.time > nextShotTime)
+        if (Time.time > nextShotTime)
         {
-            Debug.Log("Enemy Shot");
             GameObject eBullet = Instantiate(enemyProjectilePrefab, shootPoint.position, Quaternion.identity);
+            Destroy(eBullet, 5f);
         }
     }
 }
